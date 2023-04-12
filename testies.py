@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 import subprocess
 
+testn = 0
+
 def test(filein, ID, eout, eerr):
+    global testn
+    testn += 1
     proc = subprocess.Popen(['./receiver', ID], cwd="receiver", stdin = open(filein), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate()
     if (stdout.decode() != eout or (eerr != (stderr.decode() != ""))):
+        print("test: ", testn)
         print("res:" + stdout.decode())
         print("expected: " + eout)
         print("err: " + stderr.decode())
@@ -21,9 +26,15 @@ subprocess.Popen(["chmod", "+x", "receiver"], cwd="receiver", stdout=subprocess.
 subprocess.Popen(["./compile"], cwd="receiver", stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
 test("input.txt", "12345", "ABCDEFGHI\n", False)
+test("input.txt", "12344", "", True)
 test("input2.txt", "12345", "", True)
 test("input3.txt", "12345", "", True)
 test("input4.txt", "12345", "A\n", False)
+test("input5.txt", "12345", "ABCDEFGHI\n", False)
+test("input6.txt", "123456", "", True)
+test("input7.txt", "1", "ABCDEFGHI\n", False)
+test("input8.txt", "1", "ABCDEFGHI\n", False)
+test("input9.txt", "12345", "ABCDEFGHI\n", False)
 
 subprocess.Popen(["rm", "-rf", "receiver"], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
