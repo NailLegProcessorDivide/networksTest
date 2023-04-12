@@ -1,0 +1,12 @@
+12345,F,0  ,In
+12345,F,1  , The
+12345,F,2  , Beginning
+12345XFX0  X There
+12345,F,1  , Was
+54321,F,2  , Nothing
+12345,F,6  , Then
+12345,F,7  , God
+12345,T,8  , Said
+12345,F,3  , Light
+12345,F,4  , It
+12345,F,5  , Was Good

@@ -15,7 +15,7 @@ def test(filein, ID, eout, eerr):
         print("err: " + stderr.decode())
         return False
     else:
-        print("pass")
+        print("pass ", testn)
     return True
 
 subprocess.Popen(["rm", "-rf", "receiver"], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
@@ -35,6 +35,9 @@ test("input6.txt", "123456", "", True)
 test("input7.txt", "1", "ABCDEFGHI\n", False)
 test("input8.txt", "1", "ABCDEFGHI\n", False)
 test("input9.txt", "12345", "ABCDEFGHI\n", False)
+test("input10.txt", "12345", "", True)
+test("input11.txt", "12345", "", True)
+test("input12.txt", "12345", "In The Beginning Light It Was Good Then God Said\n", False)
 
 subprocess.Popen(["rm", "-rf", "receiver"], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
