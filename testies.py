@@ -38,6 +38,9 @@ test("input9.txt", "12345", "ABCDEFGHI\n", False)
 test("input10.txt", "12345", "", True)
 test("input11.txt", "12345", "", True)
 test("input12.txt", "12345", "In The Beginning Light It Was Good Then God Said\n", False)
+test("input13.txt", "-1", "", True)
+test("input14.txt", "65536", "", True)
+test("input15.txt", "12345", "ABCDE\n", False)
 
 subprocess.Popen(["rm", "-rf", "receiver"], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
