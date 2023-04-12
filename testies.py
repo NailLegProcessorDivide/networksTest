@@ -20,7 +20,10 @@ subprocess.Popen(["chmod", "+x", "compile"], cwd="receiver", stdout=subprocess.P
 subprocess.Popen(["chmod", "+x", "receiver"], cwd="receiver", stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 subprocess.Popen(["./compile"], cwd="receiver", stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
-test("input.txt", "12345", "ABCDEFGHJ\n", False)
+test("input.txt", "12345", "ABCDEFGHI\n", False)
+test("input2.txt", "12345", "", True)
+test("input3.txt", "12345", "", True)
+test("input4.txt", "12345", "A\n", False)
 
 subprocess.Popen(["rm", "-rf", "receiver"], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
