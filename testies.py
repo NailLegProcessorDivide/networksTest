@@ -8,7 +8,7 @@ def test(filein, ID, eout, eerr):
     testn += 1
     proc = subprocess.Popen(['./receiver', ID], cwd="receiver", stdin = open(filein), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate()
-    if (stdout.decode() != eout or (eerr != (stderr.decode() != ""))):
+    if (stdout.decode() != eout or (eerr != (stderr.decode() == "error\n"))):
         print("test: ", testn)
         print("res:" + stdout.decode())
         print("expected: " + eout)
